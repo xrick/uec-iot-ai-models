@@ -1,0 +1,9 @@
+mask8 = 0x4000 # >> 8 : 16384
+mask7 = 0x2000 # >> 7 :  8192
+mask6 = 0x1000 # >> 6 :  4096
+mask5 = 0x0800 # >> 5 :  2048
+mask4 = 0x0400 # >> 4 :  1024
+mask3 = 0x0200 # >> 3 :   512
+mask2 = 0x0100 # >> 2 :   256
+mask1 = 0x0080 # >> 1 :   128
+mask0 = 0x0040 # >> 0 :    64 below the value, drop the value
