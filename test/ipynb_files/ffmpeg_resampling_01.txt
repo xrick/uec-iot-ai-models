@@ -1,0 +1,3 @@
+ffmpeg -i in.m4a -ac 1 -ar 44100 -q:a 9 out.wav
+
+ffmpeg -i {} -ac 1 -ar {} -loglevel error -y {}

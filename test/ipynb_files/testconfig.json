@@ -1,0 +1,15 @@
+{
+  "config": [
+    {
+      "test_dir": "D:\\work_test\\ACDNet_Test\\test_sounds\\toilet_flushing\\",
+      "tag": 18,
+      "tag_desc": "toilet flushing"
+    },
+    {
+      "test_dir": "D:\\work_test\\ACDNet_Test\\test_sounds\\pouring_water\\",
+      "tag": 17,
+      "tag_desc": "pouring water"
+    }
+  ]
+
+}
