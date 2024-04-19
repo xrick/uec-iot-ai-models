@@ -1,0 +1,48 @@
+Alarm-Detect Model Training and Test DataSet Preprocessing Rules:
+A. Rule-1:
+
+1. Positive Alarm Data:
+   training data:160
+   validation data:40
+   test:60(optional, depending on the project due time)
+
+2. Negative Other-Sounds Data:
+   training data:160, and including 20 types of demostic sounds.
+   validation data:40 (2 sounds from the 20 types of demostic sounds)
+   test:60(optional, depending on the project due time)
+
+3. Siren-Sounds, clock-alarm, church_bells:
+   neither positive data nor negative data include these three sounds.
+   The reason is the three-sounds will cause ambiguous results in model training.
+   But, there should be some way to dealing with problem, discussing with 
+   Professor Chen.
+
+ Rule-2:
+ The 20 types of negative sounds are as following:
+
+ESC50:
+ 1, clap, ESC50_Label:22
+ 2, pouring_water, ESC50_Label:17
+ 3, water_drop, ESC50_Label:15
+ 4, footsteps, ESC50_Label:25 
+ 5, brushing_teeth. ESC50_Label:27
+ 6, drinking_sipping, ESC50_Label:29
+ 7, rain, ESC50_Label:10
+ 8, laughing, ESC50_Label:26
+ 9, car_horn, ESC50_Label:43
+ 10, glass_breaking, ESC50_Label:39
+ 11, snoring, ESC50_Label:28
+ 12, toilet_flush, ESC50_Label:18
+ 13, crying_baby, ESC50_Label:20
+ 14, wash_machine, ESC50_Label:35
+ 15, coughing, ESC50_Label:24
+ 16, sneezing, ESC50_Label:21
+ 17, cat, ESC50_Label:5
+ 18, vacuum_cleaner(吸塵器), ESC50_Label:36
+ 19, door_wood_creaks(門木頭吱吱作響), ESC50_Label:33
+ 20, dog, ESC50_Label:0
+ 21, engine, ESC50_Label:44
+ 22, thunderstorm, ESC50_Label:19
+ 23, chirping_birds(嘰嘰喳喳的鳥兒), ESC50_Label:14
+ 24, door_wood_knock(門木敲門), ESC50_Label:30
+ 25, silence

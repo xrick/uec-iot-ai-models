@@ -1,0 +1,16 @@
+*.pth
+*.csv
+*.pdf
+/src/ensemble/copy_ensemble.sh
+/dropbox/*
+/src/label_enhancement/release_labelset.py
+.idea
+fig/model.png
+fig/psla.png
+fig/*
+!fig/psla_poster_rs.png
+.DS_Store
+!/egs/audioset/class_labels_indices.csv
+!/egs/fsd50k/class_labels_indices.csv
+*.pptx
+*.mp4

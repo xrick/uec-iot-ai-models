@@ -1,0 +1,26 @@
+negative_sounds_list
+ ,聲音名,在原本資料集中的標籤,來源資料集
+1, clap,ESC50_Label:22,ESC50
+2, pouring_water,ESC50_Label:17,ESC50
+3, water_drop,ESC50_Label:15,ESC50
+4, footsteps,ESC50_Label:25,ESC50
+5,brushing_teeth,ESC50_Label:27,ESC50
+6, drinking_sipping,ESC50_Label:29,ESC50
+7, rain,ESC50_Label:10,ESC50
+8, laughing,ESC50_Label:26,ESC50
+9, car_horn,ESC50_Label:43,ESC50
+10, glass_breaking,ESC50_Label:39,ESC50
+11, snoring,ESC50_Label:28,ESC50
+12, toilet_flush,ESC50_Label:18,ESC50
+13, crying_baby,ESC50_Label:20,ESC50
+14, wash_machine,ESC50_Label:35,ESC50
+15, coughing,ESC50_Label:24,ESC50
+16, sneezing,ESC50_Label:21,ESC50
+17, cat,ESC50_Label:5,ESC50
+18, vacuum_cleaner,ESC50_Label:36,ESC50
+19, door_wood_creaks(門木頭吱吱作響),ESC50_Label:33,ESC50
+20, dog,ESC50_Label:0,ESC50
+21, engine,ESC50_Label:44,ESC50
+22, thunderstorm,ESC50_Label:19,ESC50
+23, chirping_birds(嘰嘰喳喳的鳥兒),ESC50_Label:14,ESC50
+24, door_wood_knock(門木敲門),ESC50_Label:30,ESC50
