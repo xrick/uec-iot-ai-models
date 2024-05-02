@@ -15,10 +15,13 @@ def checkEndianess():
     # Display another blank line for clarity.
     print();
 
-def ChkDirAndCreate(dir_path):
+def ChkDirAndCreate(dir_path,op):
     if not pathlib.Path(dir_path).is_dir():
         print(f"{dir_path} does not exist, create...");
-        os.mkdir(dir_path);
+        if op == 1:
+            os.mkdir(dir_path);
+        else:
+            os.makedirs(dir_path;)
         return 1;
     else:
         print(f"{dir_path} has existed...")
