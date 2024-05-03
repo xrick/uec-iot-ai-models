@@ -1,0 +1,5 @@
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:92.37287902832031, valAcc:92.37287902832031, trainAcc:76.98863636363636, record@10-epoch
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:92.79661560058594, valAcc:92.79661560058594, trainAcc:79.82954545454545, record@73-epoch
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:93.22034454345703, valAcc:93.22034454345703, trainAcc:80.9659090909091, record@76-epoch
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:93.64407348632812, valAcc:93.64407348632812, trainAcc:82.8125, record@77-epoch
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:94.49152374267578, valAcc:94.49152374267578, trainAcc:82.5284090909091, record@78-epoch

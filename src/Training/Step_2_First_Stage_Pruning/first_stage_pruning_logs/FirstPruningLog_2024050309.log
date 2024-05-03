@@ -1,0 +1,1 @@
+save model:sp_ai_model_first_stage_prun_haacc_{}_valacc{}_tracc{}_epoch_{}_{}.pt, bestAcc:92.37287902832031, valAcc:92.37287902832031, trainAcc:76.98863636363636, record@10-epoch
