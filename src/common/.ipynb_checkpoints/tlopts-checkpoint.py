@@ -42,9 +42,11 @@ def display_info(opt):
     print('| dataset  : {}'.format(opt.dataset));
     print('| nEpochs  : {}'.format(opt.nEpochs));
     print('| LRInit   : {}'.format(opt.LR));
+    print('| batchSize: {}'.format(opt.batchSize));
+    print('| Momentum   : {}'.format(opt.momentum));
+    print('| weightDecay: {}'.format(opt.weightDecay));
     print('| schedule : {}'.format(opt.schedule));
     print('| warmup   : {}'.format(opt.warmup));
-    print('| batchSize: {}'.format(opt.batchSize));
     print('| nFolds: {}'.format(opt.nFolds));
     print('| Splits: {}'.format(opt.splits));
     print('+------------------------------+');

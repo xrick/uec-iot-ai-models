@@ -1,0 +1,1054 @@
+====================================================================
+###針對二次剪枝後的重訓練，這個設定滿有效果的，要實驗是哪個參數造成的效果。
+epoch:
+acc:
+opt.batchSize = 64;
+opt.LR = 0.1;
+opt.weightDecay = 5e-4;
+opt.momentum = 0.5;
+opt.nEpochs = 500;
+opt.schedule = [0.3, 0.6, 0.9];
+
+===============================================================
+save dir is: ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/
+***Use device:cuda:0
+length of samples:651
+config is [5, 32, 10, 8, 17, 18, 27, 39, 34, 41, 72, 3]
++----------------------------------------------------------------------------+
++                           Pytorch Model Summary                            +
+------------------------------------------------------------------------------
+   Layer (type)       Input Shape      Output Shape    Param #      FLOPS #
+==============================================================================
+       Conv2d-1     (1, 1, 30225)     (5, 1, 15109)         45      679,905
+  BatchNorm2d-2     (5, 1, 15109)     (5, 1, 15109)         10            0
+         ReLu-3     (5, 1, 15109)     (5, 1, 15109)          0       75,545
+       Conv2d-4     (5, 1, 15109)     (32, 1, 7553)        800    6,042,400
+  BatchNorm2d-5     (32, 1, 7553)     (32, 1, 7553)         64            0
+         ReLu-6     (32, 1, 7553)     (32, 1, 7553)          0      241,696
+    MaxPool2d-7     (32, 1, 7553)      (32, 1, 151)          0      241,600
+      Permute-8      (32, 1, 151)      (1, 32, 151)          0            0
+       Conv2d-9      (1, 32, 151)     (10, 32, 151)         90      434,880
+ BatchNorm2d-10     (10, 32, 151)     (10, 32, 151)         20            0
+        ReLu-11     (10, 32, 151)     (10, 32, 151)          0       48,320
+   MaxPool2d-12     (10, 32, 151)      (10, 16, 75)          0       48,000
+      Conv2d-13      (10, 16, 75)       (8, 16, 75)        720      864,000
+ BatchNorm2d-14       (8, 16, 75)       (8, 16, 75)         16            0
+        ReLu-15       (8, 16, 75)       (8, 16, 75)          0        9,600
+      Conv2d-16       (8, 16, 75)      (17, 16, 75)      1,224    1,468,800
+ BatchNorm2d-17      (17, 16, 75)      (17, 16, 75)         34            0
+        ReLu-18      (17, 16, 75)      (17, 16, 75)          0       20,400
+   MaxPool2d-19      (17, 16, 75)       (17, 8, 37)          0       20,128
+      Conv2d-20       (17, 8, 37)       (18, 8, 37)      2,754      815,184
+ BatchNorm2d-21       (18, 8, 37)       (18, 8, 37)         36            0
+        ReLu-22       (18, 8, 37)       (18, 8, 37)          0        5,328
+      Conv2d-23       (18, 8, 37)       (27, 8, 37)      4,374    1,294,704
+ BatchNorm2d-24       (27, 8, 37)       (27, 8, 37)         54            0
+        ReLu-25       (27, 8, 37)       (27, 8, 37)          0        7,992
+   MaxPool2d-26       (27, 8, 37)       (27, 4, 18)          0        7,776
+      Conv2d-27       (27, 4, 18)       (39, 4, 18)      9,477      682,344
+ BatchNorm2d-28       (39, 4, 18)       (39, 4, 18)         78            0
+        ReLu-29       (39, 4, 18)       (39, 4, 18)          0        2,808
+      Conv2d-30       (39, 4, 18)       (34, 4, 18)     11,934      859,248
+ BatchNorm2d-31       (34, 4, 18)       (34, 4, 18)         68            0
+        ReLu-32       (34, 4, 18)       (34, 4, 18)          0        2,448
+   MaxPool2d-33       (34, 4, 18)        (34, 2, 9)          0        2,448
+      Conv2d-34        (34, 2, 9)        (41, 2, 9)     12,546      225,828
+ BatchNorm2d-35        (41, 2, 9)        (41, 2, 9)         82            0
+        ReLu-36        (41, 2, 9)        (41, 2, 9)          0          738
+      Conv2d-37        (41, 2, 9)        (72, 2, 9)     26,568      478,224
+ BatchNorm2d-38        (72, 2, 9)        (72, 2, 9)        144            0
+        ReLu-39        (72, 2, 9)        (72, 2, 9)          0        1,296
+   MaxPool2d-40        (72, 2, 9)        (72, 1, 4)          0        1,152
+      Conv2d-41        (72, 1, 4)         (3, 1, 4)        216          864
+ BatchNorm2d-42         (3, 1, 4)         (3, 1, 4)          6            0
+        ReLu-43         (3, 1, 4)         (3, 1, 4)          0           12
+   AvgPool2d-44         (3, 1, 4)         (3, 1, 1)          0           12
+     Flatten-45         (3, 1, 1)            (1, 3)          0            0
+      Linear-46            (1, 3)            (1, 3)         12           12
+     Softmax-47            (1, 3)            (1, 3)          0            3
+==============================================================================
+Total Params: 71,372
+Total FLOPs : 14,583,695
+------------------------------------------------------------------------------
+Input size (MB) : 0.12
+Params size (MB): 0.27
+Total size (MB) : 0.39
+------------------------------------------------------------------------------
+
+sfeb.0.weight:True
+sfeb.1.weight:True
+sfeb.1.bias:True
+sfeb.3.weight:True
+sfeb.4.weight:True
+sfeb.4.bias:True
+tfeb.0.weight:True
+tfeb.1.weight:True
+tfeb.1.bias:True
+tfeb.4.weight:True
+tfeb.5.weight:True
+tfeb.5.bias:True
+tfeb.7.weight:True
+tfeb.8.weight:True
+tfeb.8.bias:True
+tfeb.11.weight:True
+tfeb.12.weight:True
+tfeb.12.bias:True
+tfeb.14.weight:True
+tfeb.15.weight:True
+tfeb.15.bias:True
+tfeb.18.weight:True
+tfeb.19.weight:True
+tfeb.19.bias:True
+tfeb.21.weight:True
+tfeb.22.weight:True
+tfeb.22.bias:True
+tfeb.25.weight:True
+tfeb.26.weight:True
+tfeb.26.bias:True
+tfeb.28.weight:True
+tfeb.29.weight:True
+tfeb.29.bias:True
+tfeb.33.weight:True
+tfeb.34.weight:True
+tfeb.34.bias:True
+tfeb.38.weight:True
+tfeb.38.bias:True
+ACDNet model has been prepared for training
++----------------------------------------------------------------------------+
++                           Pytorch Model Summary                            +
+------------------------------------------------------------------------------
+   Layer (type)       Input Shape      Output Shape    Param #      FLOPS #
+==============================================================================
+       Conv2d-1     (1, 1, 30225)     (5, 1, 15109)         45      679,905
+  BatchNorm2d-2     (5, 1, 15109)     (5, 1, 15109)         10            0
+         ReLu-3     (5, 1, 15109)     (5, 1, 15109)          0       75,545
+       Conv2d-4     (5, 1, 15109)     (32, 1, 7553)        800    6,042,400
+  BatchNorm2d-5     (32, 1, 7553)     (32, 1, 7553)         64            0
+         ReLu-6     (32, 1, 7553)     (32, 1, 7553)          0      241,696
+    MaxPool2d-7     (32, 1, 7553)      (32, 1, 151)          0      241,600
+      Permute-8      (32, 1, 151)      (1, 32, 151)          0            0
+       Conv2d-9      (1, 32, 151)     (10, 32, 151)         90      434,880
+ BatchNorm2d-10     (10, 32, 151)     (10, 32, 151)         20            0
+        ReLu-11     (10, 32, 151)     (10, 32, 151)          0       48,320
+   MaxPool2d-12     (10, 32, 151)      (10, 16, 75)          0       48,000
+      Conv2d-13      (10, 16, 75)       (8, 16, 75)        720      864,000
+ BatchNorm2d-14       (8, 16, 75)       (8, 16, 75)         16            0
+        ReLu-15       (8, 16, 75)       (8, 16, 75)          0        9,600
+      Conv2d-16       (8, 16, 75)      (17, 16, 75)      1,224    1,468,800
+ BatchNorm2d-17      (17, 16, 75)      (17, 16, 75)         34            0
+        ReLu-18      (17, 16, 75)      (17, 16, 75)          0       20,400
+   MaxPool2d-19      (17, 16, 75)       (17, 8, 37)          0       20,128
+      Conv2d-20       (17, 8, 37)       (18, 8, 37)      2,754      815,184
+ BatchNorm2d-21       (18, 8, 37)       (18, 8, 37)         36            0
+        ReLu-22       (18, 8, 37)       (18, 8, 37)          0        5,328
+      Conv2d-23       (18, 8, 37)       (27, 8, 37)      4,374    1,294,704
+ BatchNorm2d-24       (27, 8, 37)       (27, 8, 37)         54            0
+        ReLu-25       (27, 8, 37)       (27, 8, 37)          0        7,992
+   MaxPool2d-26       (27, 8, 37)       (27, 4, 18)          0        7,776
+      Conv2d-27       (27, 4, 18)       (39, 4, 18)      9,477      682,344
+ BatchNorm2d-28       (39, 4, 18)       (39, 4, 18)         78            0
+        ReLu-29       (39, 4, 18)       (39, 4, 18)          0        2,808
+      Conv2d-30       (39, 4, 18)       (34, 4, 18)     11,934      859,248
+ BatchNorm2d-31       (34, 4, 18)       (34, 4, 18)         68            0
+        ReLu-32       (34, 4, 18)       (34, 4, 18)          0        2,448
+   MaxPool2d-33       (34, 4, 18)        (34, 2, 9)          0        2,448
+      Conv2d-34        (34, 2, 9)        (41, 2, 9)     12,546      225,828
+ BatchNorm2d-35        (41, 2, 9)        (41, 2, 9)         82            0
+        ReLu-36        (41, 2, 9)        (41, 2, 9)          0          738
+      Conv2d-37        (41, 2, 9)        (72, 2, 9)     26,568      478,224
+ BatchNorm2d-38        (72, 2, 9)        (72, 2, 9)        144            0
+        ReLu-39        (72, 2, 9)        (72, 2, 9)          0        1,296
+   MaxPool2d-40        (72, 2, 9)        (72, 1, 4)          0        1,152
+      Conv2d-41        (72, 1, 4)         (3, 1, 4)        216          864
+ BatchNorm2d-42         (3, 1, 4)         (3, 1, 4)          6            0
+        ReLu-43         (3, 1, 4)         (3, 1, 4)          0           12
+   AvgPool2d-44         (3, 1, 4)         (3, 1, 1)          0           12
+     Flatten-45         (3, 1, 1)            (1, 3)          0            0
+      Linear-46            (1, 3)            (1, 3)         12           12
+     Softmax-47            (1, 3)            (1, 3)          0            3
+==============================================================================
+Total Params: 71,372
+Total FLOPs : 14,583,695
+------------------------------------------------------------------------------
+Input size (MB) : 0.12
+Params size (MB): 0.27
+Total size (MB) : 0.39
+------------------------------------------------------------------------------
+
+/home/ai/miniconda3/envs/acdnetenv/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+device is :cuda:0
+len of Y:472
+/tmp/ipykernel_192889/3459676549.py:123: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  x = torch.tensor(x)
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc68.22034454345703_0th_epoch_20240503123940.pt
+SP-[1] Epoch: 1/500 | Time: 0m07s (Train 0m06s  Val 0m01s) | Train: LR 0.010000000000000002  Loss 0.89  Acc 45.31% | Val: Loss nan  Acc(top1) 68.22% | HA 68.22@1
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 2/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.60  Acc 37.36% | Val: Loss nan  Acc(top1) 67.37% | HA 68.22@1
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 3/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.58  Acc 43.32% | Val: Loss nan  Acc(top1) 66.53% | HA 68.22@1
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 4/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.59  Acc 39.49% | Val: Loss nan  Acc(top1) 68.22% | HA 68.22@1
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc69.06779479980469_4th_epoch_20240503124005.pt
+SP-[1] Epoch: 5/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.58  Acc 43.75% | Val: Loss nan  Acc(top1) 69.07% | HA 69.07@5
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 6/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.58  Acc 44.32% | Val: Loss nan  Acc(top1) 65.25% | HA 69.07@5
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 7/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.56  Acc 45.03% | Val: Loss nan  Acc(top1) 68.22% | HA 69.07@5
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc71.61016845703125_7th_epoch_20240503124023.pt
+SP-[1] Epoch: 8/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.57  Acc 46.45% | Val: Loss nan  Acc(top1) 71.61% | HA 71.61@8
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc72.88135528564453_8th_epoch_20240503124030.pt
+SP-[1] Epoch: 9/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.56  Acc 44.74% | Val: Loss nan  Acc(top1) 72.88% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 10/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.55  Acc 49.15% | Val: Loss nan  Acc(top1) 72.03% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 11/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.58  Acc 41.05% | Val: Loss nan  Acc(top1) 69.49% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 12/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.59  Acc 44.18% | Val: Loss nan  Acc(top1) 64.83% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 13/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.58  Acc 41.76% | Val: Loss nan  Acc(top1) 67.37% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 14/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.57  Acc 48.86% | Val: Loss nan  Acc(top1) 70.76% | HA 72.88@9
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc74.5762710571289_14th_epoch_20240503124107.pt
+SP-[1] Epoch: 15/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.52  Acc 52.13% | Val: Loss nan  Acc(top1) 74.58% | HA 74.58@15
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 16/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.51  Acc 50.43% | Val: Loss nan  Acc(top1) 31.78% | HA 74.58@15
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 17/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.52  Acc 51.28% | Val: Loss nan  Acc(top1) 72.88% | HA 74.58@15
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc75.4237289428711_17th_epoch_20240503124126.pt
+SP-[1] Epoch: 18/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.52  Acc 51.85% | Val: Loss nan  Acc(top1) 75.42% | HA 75.42@18
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 19/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 52.56% | Val: Loss nan  Acc(top1) 41.53% | HA 75.42@18
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc76.27118682861328_19th_epoch_20240503124138.pt
+SP-[1] Epoch: 20/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 49.29% | Val: Loss nan  Acc(top1) 76.27% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 21/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 54.69% | Val: Loss nan  Acc(top1) 74.58% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 22/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 55.82% | Val: Loss nan  Acc(top1) 75.00% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 23/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 53.12% | Val: Loss nan  Acc(top1) 39.41% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 24/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 52.13% | Val: Loss nan  Acc(top1) 72.03% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 25/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 51.14% | Val: Loss nan  Acc(top1) 76.27% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 26/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 54.97% | Val: Loss nan  Acc(top1) 75.85% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 27/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 53.55% | Val: Loss nan  Acc(top1) 76.27% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 28/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.52  Acc 52.70% | Val: Loss nan  Acc(top1) 72.88% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 29/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 53.41% | Val: Loss nan  Acc(top1) 65.68% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 30/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 53.69% | Val: Loss nan  Acc(top1) 36.86% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 31/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 51.85% | Val: Loss nan  Acc(top1) 42.37% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 32/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 54.12% | Val: Loss nan  Acc(top1) 38.14% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 33/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 51.42% | Val: Loss nan  Acc(top1) 73.73% | HA 76.27@20
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc76.69491577148438_33th_epoch_20240503124306.pt
+SP-[1] Epoch: 34/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 56.96% | Val: Loss nan  Acc(top1) 76.69% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 35/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 52.98% | Val: Loss nan  Acc(top1) 73.73% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 36/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 54.40% | Val: Loss nan  Acc(top1) 75.00% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 37/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 54.83% | Val: Loss nan  Acc(top1) 76.27% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 38/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 54.55% | Val: Loss nan  Acc(top1) 38.98% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 39/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 54.40% | Val: Loss nan  Acc(top1) 73.31% | HA 76.69@34
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc79.23728942871094_39th_epoch_20240503124344.pt
+SP-[1] Epoch: 40/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 54.55% | Val: Loss nan  Acc(top1) 79.24% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 41/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 56.11% | Val: Loss nan  Acc(top1) 73.73% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 42/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 57.39% | Val: Loss nan  Acc(top1) 37.71% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 43/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 54.83% | Val: Loss nan  Acc(top1) 57.63% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 44/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.51  Acc 53.69% | Val: Loss nan  Acc(top1) 75.00% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 45/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 52.84% | Val: Loss nan  Acc(top1) 72.46% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 46/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 57.95% | Val: Loss nan  Acc(top1) 72.88% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 47/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 53.55% | Val: Loss nan  Acc(top1) 75.85% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 48/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 53.55% | Val: Loss nan  Acc(top1) 72.88% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 49/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 58.24% | Val: Loss nan  Acc(top1) 71.19% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 50/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 55.40% | Val: Loss nan  Acc(top1) 69.49% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 51/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 56.53% | Val: Loss nan  Acc(top1) 74.58% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 52/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 59.23% | Val: Loss nan  Acc(top1) 74.58% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 53/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 54.97% | Val: Loss nan  Acc(top1) 77.54% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 54/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 55.97% | Val: Loss nan  Acc(top1) 78.81% | HA 79.24@40
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc80.50847625732422_54th_epoch_20240503124518.pt
+SP-[1] Epoch: 55/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 57.67% | Val: Loss nan  Acc(top1) 80.51% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 56/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.48  Acc 56.68% | Val: Loss nan  Acc(top1) 64.41% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 57/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 59.09% | Val: Loss nan  Acc(top1) 74.15% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 58/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 61.08% | Val: Loss nan  Acc(top1) 75.85% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 59/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 61.36% | Val: Loss nan  Acc(top1) 69.92% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 60/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 57.81% | Val: Loss nan  Acc(top1) 76.69% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 61/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 59.66% | Val: Loss nan  Acc(top1) 60.17% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 62/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 57.53% | Val: Loss nan  Acc(top1) 78.81% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 63/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 60.51% | Val: Loss nan  Acc(top1) 55.51% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 64/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 61.08% | Val: Loss nan  Acc(top1) 76.69% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 65/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 58.66% | Val: Loss nan  Acc(top1) 80.51% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 66/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 66.05% | Val: Loss nan  Acc(top1) 72.88% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 67/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 63.07% | Val: Loss nan  Acc(top1) 65.25% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 68/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 63.49% | Val: Loss nan  Acc(top1) 73.31% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 69/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 62.78% | Val: Loss nan  Acc(top1) 71.61% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 70/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 63.92% | Val: Loss nan  Acc(top1) 72.46% | HA 80.51@55
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc82.20338439941406_70th_epoch_20240503124658.pt
+SP-[1] Epoch: 71/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 64.20% | Val: Loss nan  Acc(top1) 82.20% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 72/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 62.78% | Val: Loss nan  Acc(top1) 71.61% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 73/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 62.93% | Val: Loss nan  Acc(top1) 76.69% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 74/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 60.65% | Val: Loss nan  Acc(top1) 78.81% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 75/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 57.81% | Val: Loss nan  Acc(top1) 73.73% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 76/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 65.06% | Val: Loss nan  Acc(top1) 69.92% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 77/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 64.63% | Val: Loss nan  Acc(top1) 82.20% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 78/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 64.91% | Val: Loss nan  Acc(top1) 78.39% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 79/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 63.21% | Val: Loss nan  Acc(top1) 64.83% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 80/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 66.34% | Val: Loss nan  Acc(top1) 77.54% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 81/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 64.91% | Val: Loss nan  Acc(top1) 74.58% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 82/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.40  Acc 62.50% | Val: Loss nan  Acc(top1) 79.66% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 83/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 65.77% | Val: Loss nan  Acc(top1) 51.69% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 84/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 62.78% | Val: Loss nan  Acc(top1) 80.51% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 85/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 64.35% | Val: Loss nan  Acc(top1) 73.73% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 86/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 63.07% | Val: Loss nan  Acc(top1) 77.97% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 87/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.40  Acc 63.78% | Val: Loss nan  Acc(top1) 55.51% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 88/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 67.19% | Val: Loss nan  Acc(top1) 70.34% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 89/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 66.34% | Val: Loss nan  Acc(top1) 58.47% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 90/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 65.20% | Val: Loss nan  Acc(top1) 73.73% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 91/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 63.64% | Val: Loss nan  Acc(top1) 75.42% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 92/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 64.91% | Val: Loss nan  Acc(top1) 69.07% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 93/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 70.17% | Val: Loss nan  Acc(top1) 75.42% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 94/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.40  Acc 63.21% | Val: Loss nan  Acc(top1) 75.00% | HA 82.20@71
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc83.05084991455078_94th_epoch_20240503124928.pt
+SP-[1] Epoch: 95/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 66.48% | Val: Loss nan  Acc(top1) 83.05% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 96/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.40  Acc 66.48% | Val: Loss nan  Acc(top1) 62.71% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 97/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 66.19% | Val: Loss nan  Acc(top1) 69.49% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 98/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 63.21% | Val: Loss nan  Acc(top1) 76.27% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 99/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 67.76% | Val: Loss nan  Acc(top1) 72.03% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 100/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.18% | Val: Loss nan  Acc(top1) 76.27% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 101/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 66.19% | Val: Loss nan  Acc(top1) 73.73% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 102/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.89% | Val: Loss nan  Acc(top1) 76.27% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 103/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 67.47% | Val: Loss nan  Acc(top1) 64.83% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 104/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 69.18% | Val: Loss nan  Acc(top1) 80.51% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 105/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 69.18% | Val: Loss nan  Acc(top1) 74.15% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 106/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 64.91% | Val: Loss nan  Acc(top1) 75.42% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 107/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.40  Acc 67.19% | Val: Loss nan  Acc(top1) 66.95% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 108/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 71.16% | Val: Loss nan  Acc(top1) 65.68% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 109/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.32% | Val: Loss nan  Acc(top1) 80.08% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 110/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.35  Acc 67.19% | Val: Loss nan  Acc(top1) 76.27% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 111/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 66.19% | Val: Loss nan  Acc(top1) 83.05% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 112/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 67.61% | Val: Loss nan  Acc(top1) 76.27% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 113/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 67.90% | Val: Loss nan  Acc(top1) 60.17% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 114/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 72.02% | Val: Loss nan  Acc(top1) 82.20% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 115/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 67.47% | Val: Loss nan  Acc(top1) 81.36% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 116/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 63.92% | Val: Loss nan  Acc(top1) 75.00% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 117/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 66.34% | Val: Loss nan  Acc(top1) 80.51% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 118/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 66.76% | Val: Loss nan  Acc(top1) 80.08% | HA 83.05@95
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc83.89830780029297_118th_epoch_20240503125158.pt
+SP-[1] Epoch: 119/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.32% | Val: Loss nan  Acc(top1) 83.90% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 120/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 67.05% | Val: Loss nan  Acc(top1) 74.58% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 121/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 67.19% | Val: Loss nan  Acc(top1) 67.80% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 122/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 66.62% | Val: Loss nan  Acc(top1) 50.85% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 123/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 69.89% | Val: Loss nan  Acc(top1) 83.05% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 124/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 64.20% | Val: Loss nan  Acc(top1) 66.53% | HA 83.90@119
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc84.32203674316406_124th_epoch_20240503125236.pt
+SP-[1] Epoch: 125/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 66.90% | Val: Loss nan  Acc(top1) 84.32% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 126/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.41  Acc 64.49% | Val: Loss nan  Acc(top1) 80.08% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 127/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 69.32% | Val: Loss nan  Acc(top1) 79.24% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 128/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.32% | Val: Loss nan  Acc(top1) 49.15% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 129/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 64.35% | Val: Loss nan  Acc(top1) 78.81% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 130/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 65.48% | Val: Loss nan  Acc(top1) 73.73% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 131/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 67.05% | Val: Loss nan  Acc(top1) 65.68% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 132/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 69.89% | Val: Loss nan  Acc(top1) 75.42% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 133/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.35  Acc 69.89% | Val: Loss nan  Acc(top1) 75.00% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 134/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 70.03% | Val: Loss nan  Acc(top1) 83.47% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 135/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 68.18% | Val: Loss nan  Acc(top1) 69.49% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 136/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 68.89% | Val: Loss nan  Acc(top1) 73.31% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 137/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.89% | Val: Loss nan  Acc(top1) 81.78% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 138/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 64.63% | Val: Loss nan  Acc(top1) 63.56% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 139/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.61% | Val: Loss nan  Acc(top1) 83.05% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 140/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 68.18% | Val: Loss nan  Acc(top1) 79.24% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 141/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.18% | Val: Loss nan  Acc(top1) 71.19% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 142/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.38  Acc 68.04% | Val: Loss nan  Acc(top1) 76.69% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 143/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.35  Acc 70.17% | Val: Loss nan  Acc(top1) 78.39% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 144/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 69.46% | Val: Loss nan  Acc(top1) 53.39% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 145/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.39  Acc 64.49% | Val: Loss nan  Acc(top1) 72.46% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 146/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 68.47% | Val: Loss nan  Acc(top1) 78.39% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 147/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 64.35% | Val: Loss nan  Acc(top1) 76.27% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 148/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 69.18% | Val: Loss nan  Acc(top1) 65.68% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 149/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.37  Acc 66.34% | Val: Loss nan  Acc(top1) 59.32% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 150/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.1  Loss 0.36  Acc 70.03% | Val: Loss nan  Acc(top1) 76.27% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 151/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.35  Acc 71.16% | Val: Loss nan  Acc(top1) 77.54% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 152/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.36  Acc 70.17% | Val: Loss nan  Acc(top1) 83.47% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 153/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.35  Acc 71.59% | Val: Loss nan  Acc(top1) 83.47% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 154/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 75.85% | Val: Loss nan  Acc(top1) 82.20% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 155/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.35  Acc 74.01% | Val: Loss nan  Acc(top1) 80.93% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 156/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.34  Acc 70.45% | Val: Loss nan  Acc(top1) 79.24% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 157/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 71.02% | Val: Loss nan  Acc(top1) 82.20% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 158/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 74.15% | Val: Loss nan  Acc(top1) 81.36% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 159/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 72.16% | Val: Loss nan  Acc(top1) 79.24% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 160/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 76.14% | Val: Loss nan  Acc(top1) 83.90% | HA 84.32@125
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+save model to ../../../trained_models/step_5_retrain_after_step_4/train_after_second_pruning_prunratio0.85_2024050312/retrained_model_after_second_pruning_ratio85.0_acc85.59321594238281_160th_epoch_20240503125621.pt
+SP-[1] Epoch: 161/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 73.15% | Val: Loss nan  Acc(top1) 85.59% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 162/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 72.73% | Val: Loss nan  Acc(top1) 79.66% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 163/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.35  Acc 71.02% | Val: Loss nan  Acc(top1) 80.08% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 164/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 71.73% | Val: Loss nan  Acc(top1) 77.97% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 165/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 75.28% | Val: Loss nan  Acc(top1) 78.81% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 166/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 73.72% | Val: Loss nan  Acc(top1) 83.05% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 167/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 71.45% | Val: Loss nan  Acc(top1) 81.78% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 168/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 74.86% | Val: Loss nan  Acc(top1) 79.24% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 169/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 74.15% | Val: Loss nan  Acc(top1) 83.05% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 170/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 71.45% | Val: Loss nan  Acc(top1) 77.12% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 171/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 74.72% | Val: Loss nan  Acc(top1) 77.12% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 172/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 70.74% | Val: Loss nan  Acc(top1) 79.66% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 173/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 75.71% | Val: Loss nan  Acc(top1) 81.36% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 174/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 70.88% | Val: Loss nan  Acc(top1) 85.17% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 175/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 75.14% | Val: Loss nan  Acc(top1) 80.51% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 176/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 73.44% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 177/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 72.44% | Val: Loss nan  Acc(top1) 80.93% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 178/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 71.59% | Val: Loss nan  Acc(top1) 79.66% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 179/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 75.43% | Val: Loss nan  Acc(top1) 81.36% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 180/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 73.72% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 181/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 72.44% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 182/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.86% | Val: Loss nan  Acc(top1) 84.75% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 183/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.29  Acc 75.71% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 184/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.01% | Val: Loss nan  Acc(top1) 79.66% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 185/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 71.31% | Val: Loss nan  Acc(top1) 81.36% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 186/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 74.72% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 187/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 71.02% | Val: Loss nan  Acc(top1) 79.66% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 188/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 74.86% | Val: Loss nan  Acc(top1) 84.75% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 189/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 74.86% | Val: Loss nan  Acc(top1) 81.36% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 190/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.15% | Val: Loss nan  Acc(top1) 77.12% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 191/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 75.28% | Val: Loss nan  Acc(top1) 81.36% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 192/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 70.60% | Val: Loss nan  Acc(top1) 82.20% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 193/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.29  Acc 75.00% | Val: Loss nan  Acc(top1) 80.08% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 194/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 75.00% | Val: Loss nan  Acc(top1) 83.90% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 195/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 71.59% | Val: Loss nan  Acc(top1) 77.54% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 196/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.32  Acc 72.16% | Val: Loss nan  Acc(top1) 81.78% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 197/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 74.57% | Val: Loss nan  Acc(top1) 85.59% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 198/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 74.57% | Val: Loss nan  Acc(top1) 85.59% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 199/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 72.30% | Val: Loss nan  Acc(top1) 83.05% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 200/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 73.44% | Val: Loss nan  Acc(top1) 78.81% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 201/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.15% | Val: Loss nan  Acc(top1) 83.47% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 202/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.30% | Val: Loss nan  Acc(top1) 84.75% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 203/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.86% | Val: Loss nan  Acc(top1) 75.42% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 204/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.34  Acc 71.31% | Val: Loss nan  Acc(top1) 85.59% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 205/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.29  Acc 75.85% | Val: Loss nan  Acc(top1) 81.78% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 206/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.29  Acc 75.14% | Val: Loss nan  Acc(top1) 76.69% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 207/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 70.74% | Val: Loss nan  Acc(top1) 80.08% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 208/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 73.01% | Val: Loss nan  Acc(top1) 83.05% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 209/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 77.13% | Val: Loss nan  Acc(top1) 81.78% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 210/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 73.30% | Val: Loss nan  Acc(top1) 73.73% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 211/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 75.43% | Val: Loss nan  Acc(top1) 77.54% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 212/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.29  Acc 74.86% | Val: Loss nan  Acc(top1) 78.39% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 213/500 | Time: 0m06s (Train 0m05s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.30  Acc 71.45% | Val: Loss nan  Acc(top1) 79.24% | HA 85.59@161
+shape of y_pred:torch.Size([472, 3])
+shape of y_target:torch.Size([472, 3])
+after: len of y_pred:236, len of y_target:236
+SP-[1] Epoch: 214/500 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.31  Acc 72.87% | Val: Loss nan  Acc(top1) 85.5
