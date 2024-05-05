@@ -1,0 +1,8 @@
+﻿Alarm+Moaning模型訓練心得
+
+
+在做最後的post-quant+QAT時發現問題：
+1. 經過前面10個warm epochs後，training acc會停留在一個acc值上，例如：68.5，然後難以收斂。在把輸入資料轉換成int8的函式，從quantize_int8轉成maskOP後，情況有明顯改善，但訓練acc仍是處於一個波動的狀態，非穩定地增加。
+2. 在目前的時程下，我想可以把no_softmax_quant_model.py改回原來有softmax那層的model.py。然後再收到softmax的輸出值後，再轉換為int8, 讓qat能順利進行。如此不知是否能改善訓練時不穩定的問題？
+3. 要實現以上第二點，可能要修改model.py中，在輸出softmaxm後的流程，加上轉換為int8的函式，因此韌體的程式碼可能也必須跟著改。
+4. 還有其它的方式嗎？將softmax直接用於qat中，參考網路做法，或問claud.ai or chatgpt。
