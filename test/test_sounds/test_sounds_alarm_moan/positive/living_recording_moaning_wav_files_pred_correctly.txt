@@ -1,0 +1,5 @@
+../test_sounds/test_sounds_alarm_moan/positive/moaning/mic_test_sound_by_soundfile_20240507170400.wav:Prediction result: [[-18  57  17]], and true label: 56
+../test_sounds/test_sounds_alarm_moan/positive/moaning/mic_test_sound_by_soundfile_20240507170430.wav:Prediction result: [[-44  86  19]], and true label: 56
+../test_sounds/test_sounds_alarm_moan/positive/moaning/mic_test_sound_by_soundfile_20240507170508.wav:Prediction result: [[-32  85   6]], and true label: 56
+
+../test_sounds/test_sounds_alarm_moan/positive/moaning/mic_test_sound_by_soundfile_20240507171455.wav:Prediction result: [[-33  59  30]], and true label: 56
