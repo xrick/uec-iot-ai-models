@@ -24,7 +24,7 @@ def ChkDirAndCreate(dir_path,op):
         if op == 1:
             os.mkdir(dir_path);
         else:
-            os.makedirs(dir_path;)
+            os.makedirs(dir_path)
         return 1;
     else:
         print(f"{dir_path} has existed...")
@@ -45,7 +45,7 @@ def getFileList(srcDir,regex='.*\.wav'):
     return out_files
 
 
-def Convert(src_wav, dest_wav, sr):
+def ConvertSR(src_wav, dest_wav, sr):
     subprocess.call('ffmpeg -i {} -ac 1 -ar {} -loglevel error -y {}'.format(
             src_wav, sr, dest_wav), shell=True);
 
