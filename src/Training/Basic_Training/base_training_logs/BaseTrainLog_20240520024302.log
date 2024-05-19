@@ -1,0 +1,2 @@
+SP-[1] Epoch: 1/1600 | Time: 0m15s (Train 0m11s  Val 0m03s) | Train: LR 0.010000000000000002  Loss 0.84  Acc 47.06% | Val: Loss -0.42  Acc(top1) 43.43% | HA 0.00@0
+
