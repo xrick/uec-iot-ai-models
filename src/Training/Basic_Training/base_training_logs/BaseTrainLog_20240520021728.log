@@ -1,0 +1,52 @@
+SP-[1] Epoch: 1/1600 | Time: 0m14s (Train 0m10s  Val 0m03s) | Train: LR 0.010000000000000002  Loss 0.89  Acc 20.04% | Val: Loss 0.34  Acc(top1) 21.10% | HA 0.00@0
+
+SP-[1] Epoch: 2/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.52  Acc 60.57% | Val: Loss 0.22  Acc(top1) 31.19% | HA 0.00@0
+
+SP-[1] Epoch: 3/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.33  Acc 64.80% | Val: Loss -0.15  Acc(top1) 55.35% | HA 0.00@0
+
+SP-[1] Epoch: 4/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.28  Acc 66.36% | Val: Loss -0.26  Acc(top1) 57.49% | HA 0.00@0
+
+SP-[1] Epoch: 5/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.25  Acc 68.75% | Val: Loss -0.19  Acc(top1) 57.80% | HA 0.00@0
+
+SP-[1] Epoch: 6/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.24  Acc 68.66% | Val: Loss -0.07  Acc(top1) 49.54% | HA 0.00@0
+
+SP-[1] Epoch: 7/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.23  Acc 68.93% | Val: Loss -0.25  Acc(top1) 58.10% | HA 0.00@0
+
+SP-[1] Epoch: 8/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.22  Acc 70.40% | Val: Loss -0.19  Acc(top1) 58.41% | HA 0.00@0
+
+SP-[1] Epoch: 9/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.21  Acc 70.96% | Val: Loss -0.15  Acc(top1) 55.96% | HA 0.00@0
+
+SP-[1] Epoch: 10/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.21  Acc 73.44% | Val: Loss -0.24  Acc(top1) 58.41% | HA 0.00@0
+
+SP-[1] Epoch: 11/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.24  Acc 66.27% | Val: Loss -0.07  Acc(top1) 44.65% | HA 0.00@0
+
+SP-[1] Epoch: 12/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.21  Acc 69.12% | Val: Loss 0.03  Acc(top1) 46.18% | HA 0.00@0
+
+SP-[1] Epoch: 13/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.20  Acc 69.39% | Val: Loss -0.11  Acc(top1) 54.13% | HA 0.00@0
+
+SP-[1] Epoch: 14/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.20  Acc 74.08% | Val: Loss -0.14  Acc(top1) 56.27% | HA 0.00@0
+
+SP-[1] Epoch: 15/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.20  Acc 75.09% | Val: Loss -0.07  Acc(top1) 52.29% | HA 0.00@0
+
+SP-[1] Epoch: 16/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.19  Acc 75.64% | Val: Loss -0.01  Acc(top1) 48.01% | HA 0.00@0
+
+SP-[1] Epoch: 17/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.19  Acc 75.46% | Val: Loss -0.08  Acc(top1) 52.91% | HA 0.00@0
+
+SP-[1] Epoch: 18/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.19  Acc 75.00% | Val: Loss -0.15  Acc(top1) 57.49% | HA 0.00@0
+
+SP-[1] Epoch: 19/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.19  Acc 76.10% | Val: Loss -0.21  Acc(top1) 59.63% | HA 0.00@0
+
+SP-[1] Epoch: 20/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.17  Acc 76.56% | Val: Loss -0.25  Acc(top1) 57.49% | HA 0.00@0
+
+SP-[1] Epoch: 21/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.18  Acc 77.02% | Val: Loss -0.16  Acc(top1) 57.80% | HA 0.00@0
+
+SP-[1] Epoch: 22/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.18  Acc 78.22% | Val: Loss -0.14  Acc(top1) 56.88% | HA 0.00@0
+
+SP-[1] Epoch: 23/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.16  Acc 79.04% | Val: Loss -0.31  Acc(top1) 53.21% | HA 0.00@0
+
+SP-[1] Epoch: 24/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.18  Acc 76.29% | Val: Loss -0.25  Acc(top1) 59.33% | HA 0.00@0
+
+SP-[1] Epoch: 25/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.15  Acc 80.51% | Val: Loss -0.20  Acc(top1) 60.24% | HA 0.00@0
+
+SP-[1] Epoch: 26/1600 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.18  Acc 79.78% | Val: Loss nan  Acc(top1) 62.69% | HA 0.00@0
+
