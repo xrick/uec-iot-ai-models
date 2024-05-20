@@ -1,10 +1,11 @@
 import wave
 import numpy as np
+import array
 
-def save_wavefile(output_path, sig):
+def save_wavefile(output_path, sig, sr):
     output_file = wave.Wave_write(output_path)
     output_file.setnchannels(1);
-    output_file.setframerate(20000);
+    output_file.setframerate(sr);
     output_file.setsampwidth(2) #2bytes per sample.
     # output_file.setparams(params) #nchannels, sampwidth, framerate, nframes, comptype, compname
     output_file.writeframes(array.array('h', sig.astype(np.int16)).tobytes(), )
