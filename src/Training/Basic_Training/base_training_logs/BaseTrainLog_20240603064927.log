@@ -51,3 +51,98 @@ SP-[1] Epoch: 23/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Lo
 
 SP-[1] Epoch: 24/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.50% | Val: Loss nan  Acc(top1) 84.30% | HA 88.41@22
 
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:88.8888931274414, ValAcc:88.8888931274414-TrAcc68.58552631578947-@25
+SP-[1] Epoch: 25/1000 | Time: 0m07s (Train 0m07s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 68.59% | Val: Loss nan  Acc(top1) 88.89% | HA 88.89@25
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:89.13043212890625, ValAcc:89.13043212890625-TrAcc67.8453947368421-@26
+SP-[1] Epoch: 26/1000 | Time: 0m07s (Train 0m07s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 67.85% | Val: Loss nan  Acc(top1) 89.13% | HA 89.13@26
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:89.85507202148438, ValAcc:89.85507202148438-TrAcc69.24342105263158-@27
+SP-[1] Epoch: 27/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 69.24% | Val: Loss nan  Acc(top1) 89.86% | HA 89.86@27
+
+SP-[1] Epoch: 28/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 70.97% | Val: Loss nan  Acc(top1) 88.65% | HA 89.86@27
+
+SP-[1] Epoch: 29/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.34% | Val: Loss nan  Acc(top1) 88.65% | HA 89.86@27
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:90.33816528320312, ValAcc:90.33816528320312-TrAcc70.14802631578947-@30
+SP-[1] Epoch: 30/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 70.15% | Val: Loss nan  Acc(top1) 90.34% | HA 90.34@30
+
+SP-[1] Epoch: 31/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.75% | Val: Loss nan  Acc(top1) 88.89% | HA 90.34@30
+
+SP-[1] Epoch: 32/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.49% | Val: Loss nan  Acc(top1) 85.02% | HA 90.34@30
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:90.57970428466797, ValAcc:90.57970428466797-TrAcc67.1875-@33
+SP-[1] Epoch: 33/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 67.19% | Val: Loss nan  Acc(top1) 90.58% | HA 90.58@33
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:91.06280517578125, ValAcc:91.06280517578125-TrAcc69.49013157894737-@34
+SP-[1] Epoch: 34/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 69.49% | Val: Loss nan  Acc(top1) 91.06% | HA 91.06@34
+
+SP-[1] Epoch: 35/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 69.74% | Val: Loss nan  Acc(top1) 88.65% | HA 91.06@34
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:91.54589080810547, ValAcc:91.54589080810547-TrAcc68.99671052631578-@36
+SP-[1] Epoch: 36/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 69.00% | Val: Loss nan  Acc(top1) 91.55% | HA 91.55@36
+
+SP-[1] Epoch: 37/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 66.78% | Val: Loss nan  Acc(top1) 88.41% | HA 91.55@36
+
+SP-[1] Epoch: 38/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 68.59% | Val: Loss nan  Acc(top1) 89.86% | HA 91.55@36
+
+SP-[1] Epoch: 39/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.50% | Val: Loss nan  Acc(top1) 90.10% | HA 91.55@36
+
+SP-[1] Epoch: 40/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 67.27% | Val: Loss nan  Acc(top1) 87.20% | HA 91.55@36
+
+SP-[1] Epoch: 41/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 68.26% | Val: Loss nan  Acc(top1) 86.71% | HA 91.55@36
+
+SP-[1] Epoch: 42/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 67.11% | Val: Loss nan  Acc(top1) 89.61% | HA 91.55@36
+
+SP-[1] Epoch: 43/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.82% | Val: Loss nan  Acc(top1) 86.71% | HA 91.55@36
+
+SP-[1] Epoch: 44/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 66.78% | Val: Loss nan  Acc(top1) 89.61% | HA 91.55@36
+
+SP-[1] Epoch: 45/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 65.21% | Val: Loss nan  Acc(top1) 85.99% | HA 91.55@36
+
+SP-[1] Epoch: 46/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 66.20% | Val: Loss nan  Acc(top1) 85.27% | HA 91.55@36
+
+SP-[1] Epoch: 47/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 71.30% | Val: Loss nan  Acc(top1) 89.86% | HA 91.55@36
+
+SP-[1] Epoch: 48/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.41% | Val: Loss nan  Acc(top1) 85.99% | HA 91.55@36
+
+SP-[1] Epoch: 49/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.74% | Val: Loss nan  Acc(top1) 87.92% | HA 91.55@36
+
+SP-[1] Epoch: 50/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 71.46% | Val: Loss nan  Acc(top1) 88.65% | HA 91.55@36
+
+SP-[1] Epoch: 51/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.50% | Val: Loss nan  Acc(top1) 86.71% | HA 91.55@36
+
+SP-[1] Epoch: 52/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 70.39% | Val: Loss nan  Acc(top1) 88.89% | HA 91.55@36
+
+SP-[1] Epoch: 53/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 69.33% | Val: Loss nan  Acc(top1) 87.20% | HA 91.55@36
+
+SP-[1] Epoch: 54/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 67.85% | Val: Loss nan  Acc(top1) 90.10% | HA 91.55@36
+
+SP-[1] Epoch: 55/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.09% | Val: Loss nan  Acc(top1) 86.96% | HA 91.55@36
+
+SP-[1] Epoch: 56/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 70.56% | Val: Loss nan  Acc(top1) 89.37% | HA 91.55@36
+
+SP-[1] Epoch: 57/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 69.65% | Val: Loss nan  Acc(top1) 88.16% | HA 91.55@36
+
+SP-[1] Epoch: 58/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 68.01% | Val: Loss nan  Acc(top1) 87.92% | HA 91.55@36
+
+SP-[1] Epoch: 59/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.42  Acc 70.48% | Val: Loss nan  Acc(top1) 84.54% | HA 91.55@36
+
+SP-[1] Epoch: 60/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 67.43% | Val: Loss nan  Acc(top1) 89.37% | HA 91.55@36
+
+SP-[1] Epoch: 61/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 70.31% | Val: Loss nan  Acc(top1) 89.13% | HA 91.55@36
+
+SP-[1] Epoch: 62/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 71.96% | Val: Loss nan  Acc(top1) 82.37% | HA 91.55@36
+
+SP-[1] Epoch: 63/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.16% | Val: Loss nan  Acc(top1) 88.89% | HA 91.55@36
+
+SP-[1] Epoch: 64/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.44  Acc 69.82% | Val: Loss nan  Acc(top1) 89.61% | HA 91.55@36
+
+SP-[1] Epoch: 65/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 69.57% | Val: Loss nan  Acc(top1) 87.20% | HA 91.55@36
+
+SP-[1] Epoch: 66/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 67.27% | Val: Loss nan  Acc(top1) 90.82% | HA 91.55@36
+
+SP-[1] Epoch: 67/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 69.41% | Val: Loss nan  Acc(top1) 88.41% | HA 91.55@36
+
+SP-[1] Epoch: 68/1000 | Time: 0m06s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.43  Acc 70.81% | Val: Loss nan  Acc(top1) 89.37% | HA 91.55@36
+
