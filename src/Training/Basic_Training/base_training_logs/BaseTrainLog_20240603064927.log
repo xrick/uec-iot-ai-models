@@ -6,3 +6,48 @@ SP-[1] Epoch: 3/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000
 
 SP-[1] Epoch: 4/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.75  Acc 45.56% | Val: Loss 0.05  Acc(top1) 60.87% | HA 0.00@0
 
+SP-[1] Epoch: 5/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.72  Acc 45.72% | Val: Loss -0.02  Acc(top1) 66.91% | HA 0.00@0
+
+SP-[1] Epoch: 6/1000 | Time: 0m07s (Train 0m07s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.70  Acc 48.60% | Val: Loss 0.13  Acc(top1) 69.57% | HA 0.00@0
+
+SP-[1] Epoch: 7/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.67  Acc 54.28% | Val: Loss 0.12  Acc(top1) 67.87% | HA 0.00@0
+
+SP-[1] Epoch: 8/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.65  Acc 54.77% | Val: Loss nan  Acc(top1) 76.33% | HA 0.00@0
+
+SP-[1] Epoch: 9/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.62  Acc 55.59% | Val: Loss nan  Acc(top1) 78.02% | HA 0.00@0
+
+SP-[1] Epoch: 10/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.010000000000000002  Loss 0.60  Acc 59.87% | Val: Loss nan  Acc(top1) 79.47% | HA 0.00@0
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:80.67633056640625, ValAcc:80.67633056640625-TrAcc60.773026315789465-@11
+SP-[1] Epoch: 11/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.56  Acc 60.77% | Val: Loss nan  Acc(top1) 80.68% | HA 80.68@11
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:82.8502426147461, ValAcc:82.8502426147461-TrAcc63.73355263157895-@12
+SP-[1] Epoch: 12/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.51  Acc 63.73% | Val: Loss nan  Acc(top1) 82.85% | HA 82.85@12
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:87.43961334228516, ValAcc:87.43961334228516-TrAcc66.11842105263158-@13
+SP-[1] Epoch: 13/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 66.12% | Val: Loss nan  Acc(top1) 87.44% | HA 87.44@13
+
+SP-[1] Epoch: 14/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.50  Acc 61.68% | Val: Loss nan  Acc(top1) 87.44% | HA 87.44@13
+
+SP-[1] Epoch: 15/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.49  Acc 65.95% | Val: Loss nan  Acc(top1) 80.92% | HA 87.44@13
+
+SP-[1] Epoch: 16/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 64.23% | Val: Loss nan  Acc(top1) 84.54% | HA 87.44@13
+
+SP-[1] Epoch: 17/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 67.11% | Val: Loss nan  Acc(top1) 86.96% | HA 87.44@13
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:87.68115997314453, ValAcc:87.68115997314453-TrAcc66.36513157894737-@18
+SP-[1] Epoch: 18/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 66.37% | Val: Loss nan  Acc(top1) 87.68% | HA 87.68@18
+
+SP-[1] Epoch: 19/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.47  Acc 68.50% | Val: Loss nan  Acc(top1) 86.23% | HA 87.68@18
+
+SP-[1] Epoch: 20/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 67.60% | Val: Loss nan  Acc(top1) 87.20% | HA 87.68@18
+
+SP-[1] Epoch: 21/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 67.76% | Val: Loss nan  Acc(top1) 85.27% | HA 87.68@18
+
+save model:uec_model_4Classes_hacc{}_valacc_{}_tracc_{}_{}th_epoch.pt, bestAcc:88.40579223632812, ValAcc:88.40579223632812-TrAcc67.43421052631578-@22
+SP-[1] Epoch: 22/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.46  Acc 67.43% | Val: Loss nan  Acc(top1) 88.41% | HA 88.41@22
+
+SP-[1] Epoch: 23/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 67.11% | Val: Loss nan  Acc(top1) 87.44% | HA 88.41@22
+
+SP-[1] Epoch: 24/1000 | Time: 0m07s (Train 0m06s  Val 0m00s) | Train: LR 0.1  Loss 0.45  Acc 68.50% | Val: Loss nan  Acc(top1) 84.30% | HA 88.41@22
+
