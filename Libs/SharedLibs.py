@@ -7,7 +7,8 @@ def getFileList(srcDir,regex='.*\.wav'):
     out_files = []
     cnt_files = 0
     for file in results:
-        if os.path.isdir(os.path.join(srcDir, file)):
+        # if not file.startswith('.') and os.path.isdir(os.path.join(srcDir, file)):
+        if not file.startswith('.') and os.path.isdir(os.path.join(srcDir, file)):
             out_files += getFileList(os.path.join(srcDir, file))
         elif re.match(regex, file,  re.I):  # file.startswith(startExtension) or file.endswith(".txt") or file.endswith(endExtension):
             out_files.append(os.path.join(srcDir, file))
